@@ -2,9 +2,17 @@ version: 0.0
 os: linux
 files:
   - source: /views/index.jade
-    destination: /home/ec2-user/train-schedule-app
+    destination: /home/ec2-user/train-schedule-app/index.jade
+
 hooks:
+  BeforeInstall:
+    # Ensure the destination directory exists before copying files
+    - location: scripts/create_directory.sh
+      timeout: 300
+      runas: ec2-user
+
   AfterInstall:
+    # Start the server after the installation
     - location: scripts/start_server.sh
       timeout: 300
       runas: ec2-user
