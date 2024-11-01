@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/train-schedule-app
+  - source: views/index.jade
+    destination: /var/www/html/index.html
 
 hooks:
   AfterInstall:
