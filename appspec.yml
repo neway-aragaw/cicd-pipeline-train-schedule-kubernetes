@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /public/index.jade
+  - source: /views/index.jade
     destination: /home/ec2-user/train-schedule-app
 hooks:
   AfterInstall:
