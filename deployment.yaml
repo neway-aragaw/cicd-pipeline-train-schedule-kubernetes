@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: train-schedule-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: train-schedule-app
+  template:
+    metadata:
+      labels:
+        app: train-schedule-app
+    spec:
+      containers:
+      - name: train-schedule-app
+        image: 050752638165.dkr.ecr.us-east-1.amazonaws.com/trainshcegulerepo:latest
+        ports:
+        - containerPort: 80
