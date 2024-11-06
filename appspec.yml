@@ -1,16 +1,16 @@
 version: 0.0
 os: linux
 files:
-  - source: /home/ec2-user/cicd-pipeline-train-schedule-kubernetes
+  - source: .
     destination: /home/ec2-user/cicd-pipeline-train-schedule-kubernetes
 hooks:
   AfterInstall:
     # Install dependencies
     - location: scripts/install_dependencies.sh
       timeout: 300
-      runas: root
+      runas: ec2-user
   ApplicationStart:
-    # Start server after installation
+    # Start the server after installation
     - location: scripts/start_app.sh
       timeout: 300
-      runas: root
+      runas: ec2-user
