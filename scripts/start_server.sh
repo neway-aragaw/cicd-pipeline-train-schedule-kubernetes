@@ -1,4 +1,9 @@
 #!/bin/bash
-cd /home/ec2-user/train-schedule-app
+# Navigate to the app directory
+cd /home/ec2-user/trainSchedule
+# Stop any running instances of the app
+pm2 stop myapp || true
+# Install dependencies (if necessary)
 npm install
-node app.js > app.log 2>&1 &
+# Start the application
+pm2 start app.js --name trainSchedule
