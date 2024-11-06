@@ -1,16 +1,22 @@
 version: 0.0
 os: linux
 files:
-  - source: .
-    destination: /home/ec2-user/cicd-pipeline-train-schedule-kubernetes
+  - source: app.js
+    destination: /var/www/html/app.js
+  - source: public/
+    destination: /var/www/html/public/
+  - source: views/
+    destination: /var/www/html/views/
+  - source: Dockerfile
+    destination: /var/www/html/Dockerfile
+
 hooks:
-  AfterInstall:
-    # Install dependencies
-    - location: scripts/install_dependencies.sh
+  BeforeInstall:
+    - location: scripts/pre_install.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
+
   ApplicationStart:
-    # Start the server after installation
     - location: scripts/start_server.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
