@@ -5,8 +5,8 @@ echo "Checking for Node.js and npm..."
 if ! command -v node &> /dev/null
 then
     echo "Node.js not found. Installing Node.js and npm..."
-    sudo apt update -y
-    sudo apt install -y nodejs npm
+    sudo yum update -y
+    sudo yum install -y nodejs npm
 else
     echo "Node.js and npm are already installed."
 fi
