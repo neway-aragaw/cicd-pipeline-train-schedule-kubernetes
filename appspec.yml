@@ -1,10 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - source: /src/
-    destination: /home/ec2-user/trainSchedule/
+  - source: /home/ec2-user/cicd-pipeline-train-schedule-kubernetes
+    destination: /home/ec2-user/train-schedule-app
 hooks:
-  AfterInstall:
-    - location: scripts/restart_app.sh
+  ApplicationStart:
+    - location: scripts/start_app.sh
       timeout: 300
-      runas: root
+      runas: ec2-user
