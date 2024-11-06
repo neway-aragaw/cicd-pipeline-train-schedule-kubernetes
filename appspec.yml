@@ -1,21 +1,14 @@
 version: 0.0
 os: linux
 files:
-  - source: /your/source/directory
-    destination: /home/ec2-user/train-schedule-app
+  - source: /home/ec2-user/cicd-pipeline-train-schedule-kubernetes
+    destination: /home/ec2-user/cicd-pipeline-train-schedule-kubernetes
 hooks:
-  BeforeInstall:
-    # Stop server before new deployment (optional for zero-downtime deployment)
-    - location: scripts/stop_app.sh
-      timeout: 300
-      runas: root
-
   AfterInstall:
     # Install dependencies
     - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root
-
   ApplicationStart:
     # Start server after installation
     - location: scripts/start_app.sh
