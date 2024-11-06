@@ -1,8 +1,3 @@
-service httpd start
-
-
-
-
 # #!/bin/bash
 # # Navigate to the app directory
 # cd /home/ec2-user/cicd-pipeline-train-schedule-kubernetes
