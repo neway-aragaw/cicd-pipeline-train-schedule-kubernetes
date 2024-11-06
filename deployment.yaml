@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /  # Assuming the whole source directory needs to be copied
+  - source: /
     destination: /home/ec2-user/train-schedule-app
 
 hooks:
