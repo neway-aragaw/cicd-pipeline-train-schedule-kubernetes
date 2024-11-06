@@ -1,11 +1,19 @@
-version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /home/ec2-user/train-schedule-app
-
-hooks:
-  AfterInstall:
-    - location: scripts/start_server.sh
-      timeout: 300
-      runas: ec2-user
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: train-schedule-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: train-schedule-app
+  template:
+    metadata:
+      labels:
+        app: train-schedule-app
+    spec:
+      containers:
+        - name: train-schedule-container
+          image: 050752638165.dkr.ecr.us-east-1.amazonaws.com/trainshcegulerepo:latest
+          ports:
+            - containerPort: 3000
